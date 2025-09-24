@@ -1,0 +1,2 @@
+# OpenPose_Python_motion-code
+此為製作OpenPose雙人動作辨識演算法開發的python程式，包含punch和guard，作為基本的開發程式，於Pycharm編譯器上得出結果
