@@ -947,47 +947,6 @@ def run_standalone_detection(camera_index=0, ground_truth_action="test"):
                 # 例如，ground_truth="straight_punch", detected_action="straight" -> 正確
                 # 預設為不正確
                 is_correct = 0
-                g_truth = ground_truth_action.lower().strip()
-                d_action = detected_action.lower().strip()
-
-                # 調試用：打印實際的值來檢查匹配情況
-                print(f"Debug: Ground truth: '{g_truth}', Detected: '{d_action}'")
-
-                # 定義動作類型映射表
-                action_mappings = {
-                    # 攻擊動作映射
-                    "straight_punch": ["straight", "straight_punch"],
-                    "hook_punch": ["hook", "hook_punch"],
-                    "uppercut_punch": ["uppercut", "uppercut_punch"],
-                    "punch": ["straight", "hook", "uppercut", "straight_punch", "hook_punch", "uppercut_punch"],
-
-                    # 防禦動作映射
-                    "high_guard": ["high_guard"],
-                    "mid_guard": ["mid_guard"],
-                    "low_guard": ["low_guard"],
-                    "cross_guard": ["cross_guard"],
-                    "shell_guard": ["shell_guard"],
-                    "peek_a_boo": ["peek_a_boo"],
-                    "guard": ["high_guard", "mid_guard", "low_guard", "cross_guard", "shell_guard", "peek_a_boo",
-                              "guard"],
-
-                    # 撥擋動作
-                    "parry_left": ["parry_left"],
-                    "parry_right": ["parry_right"],
-                    "parry": ["parry_left", "parry_right"],
-
-                    # 閃避動作映射
-                    "dodge_left": ["dodge_left"],
-                    "dodge_right": ["dodge_right"],
-                    "duck": ["duck"],
-                    "slip_left": ["slip_left"],
-                    "slip_right": ["slip_right"],
-                    "dodge": ["dodge_left", "dodge_right", "duck", "slip_left", "slip_right"],
-
-                    # 閒置狀態
-                    "idle": ["idle"],
-                }
-
                 # 精確匹配
                 if ground_truth_action.lower() == detected_action.lower():
                     is_correct = 1
@@ -1079,7 +1038,6 @@ if __name__ == "__main__":
     parser.add_argument(
         '--action',
         type=str,
-        nargs='+',
         default="idle_test",
         help='Specify the ground truth action for this test run (e.g., "straight_punch", "high_guard")'
     )
